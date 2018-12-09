@@ -46,7 +46,6 @@ ENV XAPPLRESDIR /opt/mcr/v94/X11/app-defaults
 ###############################################################################################
 
 ###############################################################################################
-# INSTALL VIM
 # CONFIGURE ENVIRONMENT
 ENV DEBIAN_FRONTEND noninteractive
 ENV SHELL /bin/bash
@@ -54,14 +53,4 @@ ENV USERNAME murphylab
 ENV UID 1000
 RUN useradd -m -s /bin/bash -N -u $UID $USERNAME
 RUN if [ ! -d /home/$USERNAME/ ]; then mkdir /home/$USERNAME/; fi
-
-# PREPARE IDE
-USER $USERNAME
-WORKDIR /home/$USERNAME/
-RUN git clone https://github.com/icaoberg/vim-as-an-ide.git && mv vim-as-an-ide/vimrc.vim ~/.vimrc && rm -rf vim-as-an-ide
-RUN mkdir ~/.vim && git clone https://github.com/VundleVim/Vundle.vim ~/.vim/bundle/Vundle.vim
-RUN git clone https://github.com/Yggdroot/duoduo.git && mv duoduo/colors ~/.vim/ && rm -rf duoduo
-RUN sed -i 's/solarized/duoduo/g' ~/.vimrc
-RUN sed -i 's/nerdtree_tabs_open_on_console_startup = 0/nerdtree_tabs_open_on_console_startup = 1/g' ~/.vimrc
-RUN vim +PluginInstall +qall
 ###############################################################################################
