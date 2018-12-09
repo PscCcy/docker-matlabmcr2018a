@@ -32,14 +32,13 @@ RUN mkdir /mcr-install && \
     mkdir /opt/mcr
 RUN cd /mcr-install && \
     wget -nc http://ssd.mathworks.com/supportfiles/downloads/R2018a/deployment_files/R2018a/installers/glnxa64/MCR_R2018a_glnxa64_installer.zip
-    cd /mcr-install && \
     echo "Unzipping container" && \
     unzip -q MCR_R2017a_glnxa64_installer.zip && \
     ./install -destinationFolder /opt/mcr -agreeToLicense yes -mode silent && \
     cd / && \
     echo "Removing temporary files" && \
     rm -rvf mcr-install
-    
+
 # CONFIGURE ENVIRONMENT VARIABLES FOR MCR
 RUN mv -v /opt/mcr/v94/sys/os/glnxa64/libstdc++.so.6 /opt/mcr/v94/sys/os/glnxa64/libstdc++.so.6.old
 ENV LD_LIBRARY_PATH /opt/mcr/v94/runtime/glnxa64:/opt/mcr/v94/bin/glnxa64:/opt/mcr/v94/sys/os/glnxa64
