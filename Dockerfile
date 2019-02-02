@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:16.04
 
 ###############################################################################################
 MAINTAINER Ivan E. Cao-Berg <icaoberg@andrew.cmu.edu>
@@ -31,7 +31,7 @@ RUN echo "Downloading Matlab MCR 2017a"
 RUN mkdir /mcr-install && \
     mkdir /opt/mcr
 RUN cd /mcr-install && \
-    wget -nc http://ssd.mathworks.com/supportfiles/downloads/R2018a/deployment_files/R2018a/installers/glnxa64/MCR_R2018a_glnxa64_installer.zip && \
+    wget --quiet -nc http://ssd.mathworks.com/supportfiles/downloads/R2018a/deployment_files/R2018a/installers/glnxa64/MCR_R2018a_glnxa64_installer.zip && \
     echo "Unzipping container" && \
     unzip -q MCR_R2018a_glnxa64_installer.zip && \
     ./install -destinationFolder /opt/mcr -agreeToLicense yes -mode silent && \
