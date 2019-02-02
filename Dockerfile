@@ -1,8 +1,8 @@
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 ###############################################################################################
 MAINTAINER Ivan E. Cao-Berg <icaoberg@andrew.cmu.edu>
-LABEL Description="Ubuntu 16.04 + MATLAB MCR 2018a"
+LABEL Description="Ubuntu 18.04 + MATLAB MCR 2018a"
 LABEL Vendor="Murphy Lab in the Computational Biology Department at Carnegie Mellon University"
 LABEL Web="http://murphylab.cbd.cmu.edu"
 LABEL Version="2018a"
